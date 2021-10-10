@@ -1,3 +1,7 @@
+*=======================================;
+*HonE - p.45;
+*---------------------------------------;
+
 title "SAS Essentials - HoE - p.45";
 
 data example;
@@ -10,7 +14,11 @@ run;
 proc means data=example;
 	var age;
 run;
+*---------------------------------------;
 
+
+*=======================================;
+*Ex. 1.1;
 *---------------------------------------;
 title "SAS Essentials - Exercise 1.1";
 
@@ -28,7 +36,11 @@ run;
 
 proc means;
 run;
+*---------------------------------------;
 
+
+*=======================================;
+*Ex. 1.2;
 *---------------------------------------;
 title "SAS Essentials - Exercise 1.2";
 
@@ -47,8 +59,9 @@ run;
 proc means;
 run;
 
-*---------------------------------------;
+*=======================================;
 *Informats and formats practice;
+*---------------------------------------;
 
 data mydata;
 	input @1 col1 4. @5 col2 $1.;
@@ -62,18 +75,18 @@ data mydata;
 proc print data=mydata;
 	format col1 3.2 col2;
 run;
-
 *---------------------------------------;
-*Infile practice;
 
+
+*=======================================;
+*Infile practice;
+*---------------------------------------;
 data mydata;
 	length Nazione $ 24;
 	infile "/home/u59542976/pil.txt" dlm='	' truncover;
 	input Nazione $ y2004 y2005 y2006 y2007 y2008 y2009 y2010 y2011 y2012 y2013 
 		y2014 y2015 y2016 y2017;
 	;
-	*---------------------------------------;
-	*Infile practice Exercise;
 
 DATA CHILDREN;
 	* WT is in column 1-2, HEIGHT is in 4-5 and AGE is in 7-8;
@@ -98,9 +111,9 @@ DATA CHILDREN;
 PROC PRINT DATA=CHILDREN;
 RUN;
 
-*---------------------------------------;
+*=======================================;
 *p.127;
-
+*---------------------------------------;
 proc import out=pil(rename=VAR1=Country VAR2-VAR15=y2004-y2017) 
 		datafile="/home/u59542976/pil.txt" dbms=TAB replace;
 	getnames=no;
@@ -113,10 +126,12 @@ run;
 proc means data=work.pil;
 	var y2004;
 run;
+*---------------------------------------;
 
-*---------------------------------------;
-*---------------------------------------;
+
+*=======================================;
 *p.129;
+*---------------------------------------;
 ods pdf file="&outpath/proc_datasets_contents.pdf";
 
 proc datasets;
@@ -129,9 +144,10 @@ proc contents data=pil;
 run;
 
 ods pdf close;
-*---------------------------------------;
-*---------------------------------------;
 
+
+*=======================================;
+*---------------------------------------;
 proc means data=pil;
 	output out=work.pil_means;
 run;
@@ -140,7 +156,9 @@ proc print data=work.pil_means label;
 run;
 
 *---------------------------------------;
-*---------------------------------------;
+
+
+*=======================================;
 *4.8 Using Proc Format - p.179;
 *---------------------------------------;
 
@@ -160,7 +178,9 @@ proc catalog catalog=mformats.formats;
 quit;
 
 *---------------------------------------;
-*---------------------------------------;
+
+
+*=======================================;
 *4.8 Using Proc Format - p.179;
 *---------------------------------------;
 
@@ -182,7 +202,9 @@ data storm_grouped;
 run;
 
 *---------------------------------------;
-*---------------------------------------;
+
+
+*=======================================;
 *Ex. 4.2a - p.189;
 *---------------------------------------;
 
@@ -204,8 +226,10 @@ run;
 
 proc print data=sashelp.cars;
 run;
-
 *---------------------------------------;
+
+
+*=======================================;
 *Ex. 4.2b - p.189;
 *---------------------------------------;
 *Non ho trovato le macchine hybrid;
@@ -215,7 +239,9 @@ proc print data=sashelp.cars;
 run;
 
 *---------------------------------------;
-*---------------------------------------;
+
+
+*=======================================;
 *Ex. 4.2c - p.189;
 *---------------------------------------;
 
@@ -239,8 +265,9 @@ proc sort data=awdsuv out=awdsuv_sorted(keep=make model MPG_Highway);
 run;
 
 *---------------------------------------;
+
+
 *=======================================;
-*---------------------------------------;
 *Ex. 4.3a - p.190;
 *---------------------------------------;
 
@@ -253,6 +280,8 @@ run;
 
 proc means data=somedata_calc;
 run;
+*---------------------------------------;
+
 
 *=======================================;
 *---------------------------------------;
@@ -269,8 +298,9 @@ data somedata_b(keep=id gp gender);
 run;
 
 *---------------------------------------;
+
+
 *=======================================;
-*---------------------------------------;
 *Ex. 4.4 - p.190;
 *---------------------------------------;
 
@@ -292,8 +322,9 @@ proc print;
 run;
 
 *---------------------------------------;
+
+
 *=======================================;
-*---------------------------------------;
 *Ex. 4.5 - p.191;
 *---------------------------------------;
 
@@ -320,8 +351,9 @@ proc print data=sasess.somedata;
 run;
 
 *---------------------------------------;
+
+
 *=======================================;
-*---------------------------------------;
 *HonE - p.207;
 *---------------------------------------;
 
@@ -349,8 +381,9 @@ run;
 
 title;
 *---------------------------------------;
+
+
 *=======================================;
-*---------------------------------------;
 *HonE - p.210;
 *---------------------------------------;
 
@@ -371,8 +404,10 @@ run;
 proc print data=weight;
 	id rat_id;
 run;
-
 *---------------------------------------;
+
+
+*=======================================;
 *HonE - p.213;
 *---------------------------------------;
 
@@ -384,8 +419,10 @@ run;
 proc means data=weight;
 	label wt_grams="Weight in grams" mdate="MEDOBS date";
 run;
-
 *---------------------------------------;
+
+
+*=======================================;
 *HonE - p.215;
 *---------------------------------------;
 
@@ -396,6 +433,8 @@ proc print data=weight label;
 run;
 
 *---------------------------------------;
+
+
 *=======================================;
 *HonE - p.219;
 *---------------------------------------;
@@ -405,8 +444,9 @@ proc print data=sasess.somedata N="Number of Subjects:" obs="Subjectz";
 	title "Proc print options demostration";
 	by gp;
 run;
-
 *---------------------------------------;
+
+
 *=======================================;
 *Ex.5.1-5.2 - p.228;
 *---------------------------------------;
@@ -425,6 +465,8 @@ run;
 title;
 footnote;
 *---------------------------------------;
+
+
 *=======================================;
 *Ex.5.3 - p.228;
 *---------------------------------------;
@@ -445,9 +487,11 @@ RUN;
 proc print label;
 run;
 
-*---------------------------------------;
 TITLE;
 FOOTNOTE;
+*---------------------------------------;
+
+
 *=======================================;
 *HonE - p.237;
 *---------------------------------------;
@@ -468,6 +512,8 @@ proc print data=dates;
 run;
 
 *---------------------------------------;
+
+
 *=======================================;
 *HonE - p.240;
 *---------------------------------------;
@@ -521,6 +567,7 @@ title;
 
 *---------------------------------------;
 
+
 *=======================================;
 *HonE - p.244;
 *---------------------------------------;
@@ -543,6 +590,7 @@ var subject comp1-comp4;
 run;
 *---------------------------------------;
 
+
 *=======================================;
 *HonE - p.247;
 *---------------------------------------;
@@ -555,10 +603,277 @@ select(status);
 	when (4,5) economic="high";
 	otherwise economic ="missing";
 end;
+select;
+	when (age<12) agegroup="child";
+	when (age>=12 and age<=19) agegroup="teen";
+	when (age>20) agegroup="adult";
+	otherwise agegroup ="na";
+end;
 
 proc print data=mydata;
 run;
 *---------------------------------------;
+
+
+*=======================================;
+*HonE - p.252;
+*---------------------------------------;
+
+data sasess.cleaned; 
+set sasess.messydata;
+label
+	education="Years of schooling" 
+	how_arrived="How Arrived at Clinic"
+	top_reason="Top Reason for Coming"
+	satisfatcion="Satisfaction Score";
+temp=arrival;
+drop arrival;
+label temp="Arrival Temperature";
+run;
+
+proc print data=sasess.cleaned(firstobs=1 obs=10) label;
+var subject education temp top_reason satisfaction;
+format subject z5.;
+run;
+*---------------------------------------;
+
+
+*=======================================;
+*HonE - p.254;
+*---------------------------------------;
+data sasess.cleaned2;
+set sasess.cleaned;
+gender = upcase(gender);
+race = upcase(race);
+if how_arrived not in ('CAR','BUS','WALK') then how_arrived="";
+if subject="" then delete;
+if gender not in ('M','F') then gender="";
+if race in ("MEX","M") then race="H";
+if race in ("X","NA") then race="";
+run;
+
+*---------------------------------------;
+
+
+*=======================================;
+*HonE - p.256;
+*---------------------------------------;
+proc freq data=sasess.cleaned2;
+tables married single top_reason race gender how_arrived;
+run;
+
+data sasess.cleaned3;
+set sasess.cleaned;
+gender = upcase(gender);
+race = upcase(race);
+if how_arrived not in ('CAR','BUS','WALK') then how_arrived="";
+if subject="" then delete;
+if gender not in ('M','F') then gender="";
+if race in ("MEX","M") then race="H";
+if race in ("X","NA") or race not in ("AA","H", "C") then race="";
+drop married;
+if top_reason not in ("1", "2", "3") then top_reason="";
+run;
+
+proc freq data=sasess.cleaned3;
+tables single top_reason race gender how_arrived;
+run;
+*---------------------------------------;
+
+
+*=======================================;
+*HonE - p.259;
+*---------------------------------------;
+proc means data=sasess.cleaned3;
+run;
+
+data sasess.cleaned4;
+set sasess.cleaned3;
+if education=99 then education=.;
+if temp<45 then temp=32+temp*9/5;
+if temp>1000 then temp=temp/10;
+if satisfaction=-99 then satisfaction=.;
+agen = input(age, 5.);
+if agen<10 or agen>99 then agen=.;
+drop age;
+label agen="Age as for 01.01.2014";
+run;
+
+proc means data=sasess.cleaned4;
+run;
+*---------------------------------------;
+
+
+*=======================================;
+*HonE - p.262;
+*---------------------------------------;
+
+data sasess.cleaned5;
+set sasess.cleaned4;
+format arrivedt datetime18.;
+datearrived2 = input(trim(datearrived), mmddyy10.);
+i = find(timerarrive, " ");
+p = find(timerarrive, "p");
+timearrive1=substr(timearrive,1,i-1);
+timearrivet=input(trim(timearrive1),time8.);
+if p>0 and timearrivet<43200 then timearrivet=timearrivet+43200;
+arrivedt = dhms(datearrived2,0,0,timearrivet);
+label arrivedt="Date&Time Arrived";
+
+*dateleft;
+format leftdt datetime18.;
+dateleft2 = input(trim(dateleft), mmddyy10.);
+*timeleft;
+il = find(timeleft, " ");
+pl = find(timeleft, "p");
+timeleft1=substr(timeleft,1,il-1);
+timeleftt=input(trim(timeleft1),time8.);
+if pl>0 and timeleftt<43200 then timeleftt=timeleftt+43200;
+
+*combining;
+leftdt = dhms(dateleft2,0,0,timeleftt);
+label leftdt="Date&Time Left";
+
+stayminutes = intck("min", arrivedt, leftdt);
+stayhours = round(stayminutes/60, .1);
+if stayhours<0 or stayhours>48 then stayhours=.;
+run;
+*---------------------------------------;
+
+
+*=======================================;
+*HonE - p.262;
+*---------------------------------------;
+
+proc freq data=sasess.cleaned5;
+tables subject / out=frqcnt;
+run;
+
+proc print data=frqcnt;
+where count>1;
+run;
+
+proc print data=sasess.cleaned5;
+where subject>24 and subject<29;
+run;
+
+data sasess.cleaned6;
+set sasess.cleaned5;
+if _N_=27 then subject=27;
+run;
+*---------------------------------------;
+
+
+*=======================================;
+*Ex.6.1 - p.268;
+*---------------------------------------;
+DATA OWED;
+INPUT ID $3. AMOUNTOWED DOLLAR9.;
+DATALINES;
+001 $3,209
+002 $29
+002 $34.95
+003 2,012
+003 312.45
+003 34.23
+004 2,312
+004 $3.92
+005 .98
+;
+
+proc transpose data=owed out=expanded prefix=amt;
+by id;
+var amountowed;
+run;
+
+data summarize;
+set expanded;
+total=sum(of amt:);
+*total=amt1+amt2+amt3;
+format total dollar9.2;
+drop _name_;
+run;
+*---------------------------------------;
+
+
+*=======================================;
+*Ex.6.2 - p.269;
+*---------------------------------------;
+DATA wound2;
+set sasess.wound;
+select;
+when (age le 4) agegp="Toddler";
+when (age gt 4 and age le 12) agegp="Child";
+when (age gt 12 and age le 18) agegp="Adult";
+otherwise agegp="NA";
+end;
+run;
+*---------------------------------------;
+
+
+*=======================================;
+*Ex.6.3 - p.269;
+*---------------------------------------;
+*fixing gender;
+data fixmiss;
+set sasess.somemiss;
+run;
+proc freq data=fixmiss;
+tables gender;
+run;
+
+data fixmiss;
+set sasess.somemiss;
+if find(lowcase(gender), "f")>0 then gender="F";
+else gender="M";
+run;
+proc freq data=fixmiss;
+tables gender;
+run;
+
+*fixing age;
+*step 1;
+proc freq data=fixmiss;
+tables age;
+run;
+proc means data=fixmiss;
+var age;
+run;
+
+*step 2;
+data fixmiss2;
+set fixmiss;
+agen = input(age, 4.);
+run;
+proc means data=fixmiss2;
+var agen;
+run;
+
+*step 3;
+data fixmiss2;
+set fixmiss2;
+if agen>105 then agen=.;
+run;
+proc means data=fixmiss2;
+var agen;
+run;
+*---------------------------------------;
+
+
+
+
+
+proc print data=sasess.cleaned5(obs=20);
+format timearrive $16.;
+run;
+
+
+
+
+
+
+
+
 
 
 
